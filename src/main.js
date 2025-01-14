@@ -237,7 +237,7 @@ const geometry = new THREE.CylinderGeometry( 1, 1, 1, 32 );
 
 const loader = new GLTFLoader();
 loader.load(
-	'/Computer-caseBAKE.gltf',
+	'../public/Computer-caseBAKE.gltf',
 	function ( gltf ) {
     comp = gltf.scene
     comp.position.set(-.6, 0, 3.6)
@@ -247,16 +247,13 @@ loader.load(
     
 
   loader.load(
-    '/Computer-wires.gltf',
+    '../public/Computer-wires.gltf',
     function ( gltf ) {
       comp = gltf.scene
       comp.position.set(-.6, 0, 3.6)
       comp.scale.set(2, 2, 2)
       scene.add( gltf.scene );
     });
-
-
-  
 
 
   
@@ -285,84 +282,14 @@ glass.transmission = 0.5;
 glass.roughness = 0;
 glass.ior = 1
 
-/*const geometry10 = new THREE.BoxGeometry( 1, 1, 1 );
-  const window2 = new THREE.Mesh( geometry10, glass );
-  window2.position.set(1.2, .5, 3.9)
-  window2.scale.set(1.25, 1, .03)
-  scene.add( window2 );*/
-
-  /*const glass2 = new THREE.MeshPhongMaterial({
-    map: renderTarget.texture
-  });*/
-
-  /*const geometry11 = new (THREE.PlaneGeometry( 
-    geometry11.innerWidth,
-    geometry11.innerHeight, 1), glass2);
-
-  glass.color = new THREE.Color(1, 1, 1);
-  glass.transmission = 1.0;
-  glass.roughness = 0.5;
-
-  const window3 = new THREE.Mesh( geometry11, glass);
-  window3.position.set(3.3, 1.5, 0)
-  window3.scale.set(3.9, 4.5, .03)
-  scene.add( window3 );*/
-
-
-loader.load(
-  '/computer_hole.gltf',
-  function ( gltf ) {
-  animated = gltf.scene
-      animated.position.set(-.6, 0, 3.6)
-      scene.add( gltf.scene );
-        });
-        
-
 
 function animate() {
 	controls.update();
 
 	renderer.render( scene, camera, );
-  /*/ Render the texture scene to the render target
-renderer.setRenderTarget(renderTarget);
-renderer.render(scene, camera2);
-renderer.setRenderTarget(null)*/
+
 }
 
 
 renderer.setAnimationLoop( animate );
 
-
-
-
-//how to make camera texture
-/* ... your scene setup ...
-
-// Create a render target
-const renderTarget = new THREE.WebGLRenderTarget(512, 512);
-
-// Create a camera for the texture
-const textureCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-textureCamera.position.set(5, 5, 5);
-textureCamera.lookAt(0, 0, 0);
-
-// Create a scene for the texture
-const textureScene = new THREE.Scene();
-textureScene.add(new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
-));
-
-// Render the texture scene to the render target
-renderer.setRenderTarget(renderTarget);
-renderer.render(textureScene, textureCamera);
-renderer.setRenderTarget(null);
-
-// Use the render target texture on a material
-const material = new THREE.MeshBasicMaterial({ map: renderTarget.texture });
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
-scene.add(plane);
-
-// ... your render loop ...
-
-renderer.render(scene, camera);*/
